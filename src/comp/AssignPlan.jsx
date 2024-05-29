@@ -29,6 +29,7 @@ function AssignPlan({ customerId }) {
     const [isProRated, setIsProRated] = useState(false);
     const [proRatedEndDate, setProRatedEndDate] = useState('');
     const [selectedPlanDetails, setSelectedPlanDetails] = useState(null);
+    const [bonus, setBonusAmount] = useState(0);
 
     const filteredPlans = plans.filter(plan => plan.type === mode);
 
@@ -81,6 +82,7 @@ function AssignPlan({ customerId }) {
             'transaction_type': mode,
             'isProRated': isProRated,
             'proRatedEndDate': proRatedEndDate,
+            'bonus': bonus,
         };
 
         const response = await fetch('http://localhost:5000/api/assign-plan', {
@@ -157,6 +159,14 @@ function AssignPlan({ customerId }) {
                         label={mode === 'Package' ? "Is Pro Rated" : "Custom Billing Cycle"}
                     />
                 )}
+                <FormControl fullWidth margin="normal">
+                <TextField
+                    type="number"
+                    value={bonus}
+                    onChange={(e) => setBonusAmount(e.target.value)}
+                    label="Bonus amount"
+                />
+                </FormControl>
                 {isProRated && (
                     <FormControl fullWidth margin="normal">
                         <TextField

@@ -43,7 +43,7 @@ function ChangePlan({ customerId }) {
       const response = await fetch("http://localhost:5000/api/change-plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customerId: customerId, plan_id }),
+        body: JSON.stringify({ customerId: customerId, 'planId': plan_id }),
       });
 
       const res = await response.json();
@@ -69,7 +69,7 @@ function ChangePlan({ customerId }) {
 
     const res = await response.json();
     if (response.status === 200) {
-      setCurrentPlan(res.data.activePlan);
+      setCurrentPlan(res.data);
     } else {
       setCurrentPlan(null);
     }
