@@ -34,7 +34,7 @@ function UpdateBilling({ customerId }) {
         const res = await response.json();
         console.log(res);
         if (response.status === 200) {
-            setCurrentPlan(res.data.activePlan)
+            setCurrentPlan(res.data)
         }
     }
 

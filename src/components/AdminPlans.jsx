@@ -8,6 +8,7 @@ import UpdateCustomer from '../comp/UpdateCustomer';
 import Transactions from '../comp/Transactions';
 import ChangePlan from '../comp/ChangePlan';
 import DeactivateCustomer from '../comp/DeactivateCustomer';
+import Topup from '../comp/TopUp';
 
 const TabPanel = ({ children, value, index }) => {
   return (
@@ -41,6 +42,7 @@ const AdminPlans = () => {
           <Tab label="Assign Plan" {...a11yProps(4)} />
           <Tab label="Update Customer" {...a11yProps(5)} />
           <Tab label="Deactivate Customer" {...a11yProps(6)} />
+          <Tab label="Bonus" {...a11yProps(7)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -63,6 +65,9 @@ const AdminPlans = () => {
     </TabPanel>
     <TabPanel value={value} index={6}>
         <DeactivateCustomer customerId = {customerId}></DeactivateCustomer>
+    </TabPanel>
+    <TabPanel value={value} index={7}>
+      <Topup customerId = {customerId} ></Topup>
     </TabPanel>
     </div>
   );
